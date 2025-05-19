@@ -1,0 +1,9 @@
+{
+    "wind_speed_max": 10,
+    "temperature_min": 10,
+    "temperature_max": 25,
+    "humidity_min": 30,
+    "months": [4, 5, 10],
+    "area_bbox": [41.5, -124.5, 39.5, -123.0]
+  }
+  

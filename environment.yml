@@ -1,0 +1,14 @@
+name: firewatch
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - numpy
+  - pandas
+  - matplotlib
+  - geopandas
+  - xarray
+  - rioxarray
+  - netcdf4
+  - cdsapi
+  - jupyterlab
