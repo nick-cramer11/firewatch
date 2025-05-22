@@ -38,9 +38,12 @@ era5 = xr.open_dataset("era5_subset.nc")
 era5["t2m"] = era5["t2m"] - 273.15
 
 # Clip using shapefile
-gdf = gpd.read_file("CNTYOUTL.SHP")
-era5 = era5.rio.write_crs("EPSG:4326")
+gdf = gpd.read_file(r"firewatch\data\hrc_ownership_polygon\hrc_ownership_final.shp")
+era5 = era5.rio.write_crs("EPSG:26741")  # NAD83 / California zone 1 (ftUS)
 era5_clip = era5.rio.clip(gdf.geometry, gdf.crs)
+
+bounds = era5.rio.bounds()  # Call the method
+print(f"Left: {bounds[0]}, Bottom: {bounds[1]}, Right: {bounds[2]}, Top: {bounds[3]}")
 
 # Save output
 era5_clip.to_netcdf("era5_humboldt.nc")
