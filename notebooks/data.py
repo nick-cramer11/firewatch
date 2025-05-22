@@ -4,6 +4,8 @@ import cdsapi
 import os
 import sys
 
+os.environ["CDSAPI_RC"] = r"C:\Users\jginn\.cdsapirc"
+
 if not os.path.exists(os.path.expanduser("~/.cdsapirc")):
     sys.exit("Error: CDS API key is not configured. Please ensure the '.cdsapirc' file exists in your home directory.")
 
@@ -18,7 +20,7 @@ c.retrieve(
             '2m_dewpoint_temperature', 'surface_pressure'
         ],
         'year': '2024',
-        # 'month': ['04', '05', '10'],  # spring/fall months
+        'month': ['04', '05', '10'],  # spring/fall months
         'day': ['01', '02', '03'],    # test subset
         'time': ['12:00'],
         'format': 'netcdf',
