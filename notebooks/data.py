@@ -41,7 +41,7 @@ def retrieve_era5_data(year=2024, variables=None, area=None):
             "area": area
         }
         
-        output_file = f"era5_{month:02d}.nc" # e.g., "era5_01.nc" for January
+        output_file = f"era5_{month:02d}_{year}.nc" # e.g., "era5_01_2024.nc" for January 2024
         
         if os.path.exists(output_file): 
             print(f"File {output_file} already exists. Skipping download.")
