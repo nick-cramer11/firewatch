@@ -57,7 +57,7 @@ for month_year in months:
                 RH_MIN <= rh_mean <= RH_MAX and
                 wind_mean <= WIND_MAX
             )
-            symbol = "✅" if is_eligible else "❌"
+            symbol = "Yes" if is_eligible else "No"
 
             records.append({
                 "Date": date,
