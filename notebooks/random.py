@@ -1,3 +1,5 @@
+### not relevant script anymore, see data_import for updated version
+
 import cdsapi
 
 # This script retrieves ERA5 data for a specific region and time period, processes it, and saves the output.
