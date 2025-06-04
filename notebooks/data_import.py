@@ -57,7 +57,7 @@ def retrieve_era5_data(year=2024, variables=None, area=None, output_dir=".", ret
         days_in_month = calendar.monthrange(year, month)[1]
         days = [f"{i:02d}" for i in range(1, days_in_month + 1)]
         
-        # Original working request parameters
+        # request parameters
         request = {
             "product_type": "reanalysis",
             "variable": variables,
@@ -65,8 +65,8 @@ def retrieve_era5_data(year=2024, variables=None, area=None, output_dir=".", ret
             "month": [f"{month:02d}"],  # Keep as list format
             "day": days,
             "daily_statistic": "daily_mean",
-            "time_zone": "utc-08:00",  # Your original timezone
-            "frequency": "6_hourly",   # Your original frequency
+            "time_zone": "utc-08:00",  # timezone for calculating daily mean
+            "frequency": "6_hourly",   
             "format": "netcdf",
             "area": area
         }
@@ -147,31 +147,4 @@ def validate_parameters(year, variables, area):
         raise ValueError("Invalid latitude range")
     if not (-180 <= west < east <= 180):
         raise ValueError("Invalid longitude range")
-
-# Example usage
-if __name__ == "__main__":
-    # Download with validation
-    try:
-        year = 2024
-        variables = ["2m_temperature", "2m_dewpoint_temperature"]
-        area = [41.5, -124.5, 39.5, -123]
-        
-        validate_parameters(year, variables, area)
-        result = retrieve_era5_data(
-            year=year,
-            variables=variables,
-            area=area,
-            output_dir="./era5_data",
-            retry_attempts=3
-        )
-        
-        if isinstance(result, tuple):
-            monthly_data, failed_downloads = result
-            print(f"\nDownload completed with {len(failed_downloads)} failures")
-        else:
-            monthly_data = result
-            print(f"\nAll downloads completed successfully!")
-            
-    except Exception as e:
-        print(f"Error: {e}")
 

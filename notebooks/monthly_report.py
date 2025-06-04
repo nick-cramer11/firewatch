@@ -15,10 +15,17 @@ import pandas as pd
 # make sure the working directory is set to the project root
 os.chdir(r"C:\Users\jginn\OneDrive\Documents\OSU_24-25\spring25\GEOG562\project\python_code_project")
 
+##################################
+
+### Set the year and data folder for analysis
+year = 2024  # Change this to the desired year for analysis
+data_folder = rf"firewatch/data/era5_data/{year}" # Define the directory containing your NetCDF files
+
 ##############################
+
 importlib.reload(dpy)
 # unzip the data files if not already unzipped
-year = 2015
+
 unzip.unzip_and_rename_all(rf"firewatch/data/era5_data/{year}", rf"firewatch/data/era5_data/{year}")
 
 #################################
@@ -26,7 +33,6 @@ unzip.unzip_and_rename_all(rf"firewatch/data/era5_data/{year}", rf"firewatch/dat
 
 importlib.reload(dpy)
 # Count qualifying days for each month in {year} at a specific location
-data_folder = rf"firewatch/data/era5_data/{year}" # Define the directory containing your NetCDF files
 lat = 40.606546
 lon = -124.038802
 monthly_results = {}
@@ -143,7 +149,7 @@ print(f"HTML report saved: qualifying_days_report_{year}.html")
 ### Raster of monthly qualifying days
 importlib.reload(dpy)
 
-months = (3, 6)  # Example: March to June
+# months = (3, 6)  # Example: March to June
 qualifying_days_raster = dpy.count_qualifying_days_raster(data_folder, year)
 
 plt.figure(figsize=(8, 6))
@@ -180,4 +186,5 @@ plt.ylabel("Latitude")
 legend_patches = [mpatches.Patch(color=color, label=f"Month {month}") for month, color in month_colors.items()]
 plt.legend(handles=legend_patches, bbox_to_anchor=(1.02, .5), loc='center left', title="Months")
 plt.subplots_adjust(right=0.75)
+plt.savefig(f"monthly_qualifying_days_map_{year}.png", bbox_inches="tight", dpi=300)  # Save as image
 plt.show()
