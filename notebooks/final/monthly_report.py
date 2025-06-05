@@ -2,8 +2,8 @@ import os
 import sys
 sys.path.append(r"C:\Users\jginn\OneDrive\Documents\OSU_24-25\spring25\GEOG562\project\python_code_project\firewatch\notebooks")
 # Import the custom module for counting qualifying days
-import days_per_year as dpy
-import unzip_and_rename as unzip
+import weather_analysis as dpy
+import preprocessing as unzip
 import importlib
 importlib.reload(dpy)
 import xarray as xr

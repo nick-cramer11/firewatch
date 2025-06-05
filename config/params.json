@@ -1,9 +1,24 @@
 {
-    "wind_speed_max": 10,
-    "temperature_min": 10,
-    "temperature_max": 25,
-    "humidity_min": 30,
-    "months": [4, 5, 10],
-    "area_bbox": [41.5, -124.5, 39.5, -123.0]
+  "weather_criteria": {
+    "temperature_range_f": [50, 90],
+    "humidity_range": [20, 80],
+    "wind_speed_max_mps": 10
+  },
+  "analysis_months": [4, 5, 10],
+  "study_years": [1990, 1995, 2000, 2020],
+  "area_bbox": [41.5, -124.5, 39.5, -123.0],
+  "point_location": {
+    "lat": 40.606546,
+    "lon": -124.038802
+  },
+  "data_paths": {
+    "raw_data_dir": "data/era5_data",
+    "unzipped_dir": "data/unzipped",
+    "output_dir": "data/processed"
+  },
+  "output_flags": {
+    "generate_html_report": true,
+    "save_plots": true,
+    "export_rasters": true
   }
-  
+}
